@@ -10,6 +10,8 @@ import Foundation
 extension ContentView {
     @MainActor class ViewModel: ObservableObject {
         @Published var people: [Person]
+        @Published var showPicker = false
+
         let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedPeople")
 
         init() {

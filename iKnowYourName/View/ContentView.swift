@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = ViewModel()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                ForEach(viewModel.people) { person in
+                    NavigationLink {
+                        DetailView(person: person)
+                    } label: {
+                        Text(person.name)
+                    }
+                }
+            }
         }
-        .padding()
     }
 }
 
