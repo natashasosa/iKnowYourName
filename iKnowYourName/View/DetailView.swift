@@ -48,8 +48,9 @@ struct DetailView: View {
         .navigationBarTitle("\(person.firstName)'s profile", displayMode: .inline)
     }
 }
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView(person: Person(id: UUID(), name: "name", profession: "profession", description: "description"))
-    }
-}
+
+//struct DetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailView(person: Person(id: UUID(), name: "name", profession: "profession", description: "description"))
+//    }
+//}

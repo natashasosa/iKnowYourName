@@ -5,7 +5,12 @@
 //  Created by Natasha Rebelo on 29/09/23.
 //
 
+// to do:
+// find a place to call the LocationFetcher without an user input
+// find a way to get its coordenates to be able to create it's location on the person object
+
 import SwiftUI
+import CoreLocation
 
 struct AddView: View {
     @Environment (\.dismiss) var dismiss
@@ -24,6 +29,7 @@ struct AddView: View {
     @State private var inputImage: UIImage?
 
     let context = CIContext()
+    let locationFetcher = LocationFetcher()
 
     var body: some View {
         NavigationView {
@@ -60,6 +66,17 @@ struct AddView: View {
                     TextField("Profession", text: $profession)
                     TextField("Description", text: $description)
                 }
+                Button("Start location") {
+                    self.locationFetcher.start()
+                }
+                Button("Test location") {
+
+                    if let location = self.locationFetcher.lastKnownLocation {
+                        print("Your location is \(location)")
+                    } else {
+                        print("Your location is unknown")
+                    }
+                }
 
                 Button("Save") {
                     var imageData: Data? = nil
@@ -68,7 +85,8 @@ struct AddView: View {
                             imageData = jpegData
                         }
                     }
-                    let newPerson = Person(id: id, name: name, profession: profession, description: description, image: imageData)
+                    let newPerson = Person(id: id, name: name, profession: profession, description: description, image: imageData ,location: Location.example)
+
                     viewModel.people.append(newPerson)
                     viewModel.savePeople() // Save the updated data
                     dismiss()

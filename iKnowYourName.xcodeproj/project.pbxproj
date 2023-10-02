@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B7327EC62ACB4BE10049A56C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7327EC52ACB4BE10049A56C /* Location.swift */; };
+		B7327EC82ACB4F110049A56C /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7327EC72ACB4F110049A56C /* LocationFetcher.swift */; };
 		B7844DA62ABE0FA6004B0944 /* iKnowYourNameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7844DA52ABE0FA6004B0944 /* iKnowYourNameApp.swift */; };
 		B7844DA82ABE0FA6004B0944 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7844DA72ABE0FA6004B0944 /* MainView.swift */; };
 		B7844DAA2ABE0FA7004B0944 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7844DA92ABE0FA7004B0944 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		B7327EC52ACB4BE10049A56C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		B7327EC72ACB4F110049A56C /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		B7844DA22ABE0FA6004B0944 /* iKnowYourName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iKnowYourName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7844DA52ABE0FA6004B0944 /* iKnowYourNameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iKnowYourNameApp.swift; sourceTree = "<group>"; };
 		B7844DA72ABE0FA6004B0944 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				B7D787F82AC6020E00964D71 /* ImagePicker.swift */,
+				B7327EC72ACB4F110049A56C /* LocationFetcher.swift */,
 			);
 			path = UIViewRepresentatives;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			files = (
 				B7D787F12AC5FF2A00964D71 /* Person.swift in Sources */,
 				B7D787F52AC600C600964D71 /* FileManager-DocumentsDirectory.swift in Sources */,
+				B7327EC82ACB4F110049A56C /* LocationFetcher.swift in Sources */,
 				B7D5A11C2AC7513B00678602 /* AddView.swift in Sources */,
 				B7844DA82ABE0FA6004B0944 /* MainView.swift in Sources */,
 				B7327EC62ACB4BE10049A56C /* Location.swift in Sources */,
@@ -337,6 +341,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iKnowYourName/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to access your location so we can save it on your contact.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need to access your library to pick a photo.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need to access your library to pick a photo.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -368,6 +373,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iKnowYourName/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to access your location so we can save it on your contact.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need to access your library to pick a photo.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need to access your library to pick a photo.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
