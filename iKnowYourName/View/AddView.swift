@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//Ultima coisa feita: conseguir adicionar foto a view. Ainda é necessário ver como atribuir ao usuario e salvar tudo no directory
+
 struct AddView: View {
     @Environment (\.dismiss) var dismiss
     @State private var name = ""
@@ -55,8 +57,15 @@ struct AddView: View {
                 Form {
                     TextField("Name: ", text: $name)
                     Button("Save") {
-                        let newPerson = Person(id: id, name: name)
+                        var imageData: Data? = nil
+                        if let inputImage = inputImage {
+                            if let jpegData = inputImage.jpegData(compressionQuality: 0.8) {
+                                imageData = jpegData
+                            }
+                        }
+                        let newPerson = Person(id: id, name: name, image: imageData)
                         myContacs.people.append(newPerson)
+                        myContacs.savePeople() // Save the updated data
                         dismiss()
                     }
                 }

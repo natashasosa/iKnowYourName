@@ -14,30 +14,14 @@ struct Person: Codable, Identifiable {
     //figuring out how to store image
     let id: UUID
     let name: String
-//    let image: UIImage?
+    var image: Data?
 
+    var displayImage: Image {
+        if let imageData = image, let uiImage = UIImage(data: imageData) {
+            return Image(uiImage: uiImage)
 
-//    private enum CodingKeys: String, CodingKey {
-//        case name
-//        case imageData
-//    }
-//
-//    init(name: String /*image: UIImage?*/) {
-//        self.name = name
-////        self.image = image
-//
-//    }
-//
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        name = try container.decode(String.self, forKey: .name)
-////        imageData = try container.decode(Data?.self, forKey: .imageData)
-////        image = imageData.flatMap { UIImage(data: $0) }
-//    }
-//
-//    func encode(to encoder: Encoder) throws {
-//        var container = encoder.container(keyedBy: CodingKeys.self)
-//        try container.encode(name, forKey: .name)
-////        try container.encode(imageData, forKey: .imageData)
-//    }
+        } else {
+            return Image(systemName: "person.fill") // Placeholder image
+        }
+    }
 }

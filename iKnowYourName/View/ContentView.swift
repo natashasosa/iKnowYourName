@@ -9,13 +9,6 @@ import CoreImage.CIFilterBuiltins
 import SwiftUI
 
 struct ContentView: View {
-    @State private var image: Image?
-
-    @State private var showingImagePicker = false
-    @State private var inputImage: UIImage?
-
-    let context = CIContext()
-
 
     //@StateObject private var viewModel = ViewModel()
     @StateObject private var myContacts = People()
@@ -32,7 +25,17 @@ struct ContentView: View {
                             NavigationLink {
                                 DetailView(person: person)
                             } label: {
-                                Text(person.name)
+                                HStack {
+                                    person.displayImage
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 55, height: 55)
+                                        .clipShape(Circle())
+
+                                    Text(person.name)
+                                        .font(.headline)
+                                        .padding(.horizontal)
+                                }
                             }
                         }
                     }
@@ -40,18 +43,10 @@ struct ContentView: View {
             }
             .navigationTitle("I know your name")
             .toolbar {
-                HStack {
-                    Button {
-                        showingAddSheet = true
-                    } label: {
-                        Label("Add", systemImage: "plus.circle")
-                    }
-
-                    Button {
-                        showingImagePicker = true
-                    } label: {
-                        Label("New Picutre", systemImage: "photo.on.rectangle.angled")
-                    }
+                Button {
+                    showingAddSheet = true
+                } label: {
+                    Label("Add", systemImage: "plus.circle")
                 }
             }
             .sheet(isPresented: $showingAddSheet) {

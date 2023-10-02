@@ -17,7 +17,16 @@ class People: ObservableObject {
             let data = try Data(contentsOf: savePath)
             people = try JSONDecoder().decode([Person].self, from: data)
         } catch {
-            people = [Person(id: UUID(),name: "testing")]
+            people = []
+        }
+    }
+
+    func savePeople() {
+        do {
+            let data = try JSONEncoder().encode(people)
+            try data.write(to: savePath)
+        } catch {
+            print("Error saving people: \(error)")
         }
     }
     
