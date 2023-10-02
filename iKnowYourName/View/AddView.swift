@@ -9,11 +9,13 @@ import SwiftUI
 
 struct AddView: View {
     @Environment (\.dismiss) var dismiss
+    
     @State private var name = ""
     @State private var description = ""
     @State private var profession = ""
     @State private var id = UUID()
-    @StateObject var myContacs: People
+
+    @StateObject var viewModel: MainView.ViewModel
 
     @State private var image: Image?
     @State private var filterIntensity = 0.5
@@ -67,8 +69,8 @@ struct AddView: View {
                         }
                     }
                     let newPerson = Person(id: id, name: name, profession: profession, description: description, image: imageData)
-                    myContacs.people.append(newPerson)
-                    myContacs.savePeople() // Save the updated data
+                    viewModel.people.append(newPerson)
+                    viewModel.savePeople() // Save the updated data
                     dismiss()
                 }
             }

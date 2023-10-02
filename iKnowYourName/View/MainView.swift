@@ -8,15 +8,15 @@ import CoreImage
 import CoreImage.CIFilterBuiltins
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
 
-    @StateObject private var myContacts = People()
+    @StateObject private var viewModel = MainView.ViewModel()
     @State private var showingAddSheet = false
 
     var body: some View {
         NavigationView {
             VStack {
-                if myContacts.people.count < 1 {
+                if viewModel.people.count < 1 {
                     VStack {
                         Image(systemName: "person.fill")
                             .resizable()
@@ -30,7 +30,7 @@ struct ContentView: View {
                     }
                 } else {
                     List {
-                        ForEach(myContacts.people) { person in
+                        ForEach(viewModel.people) { person in
                             NavigationLink {
                                 DetailView(person: person)
                             } label: {
@@ -55,8 +55,8 @@ struct ContentView: View {
                         }
                         .onDelete { indices in
                             if let indexToDelete = indices.first {
-                                let personToDelete = myContacts.people[indexToDelete]
-                                myContacts.deletePerson(withID: personToDelete.id)
+                                let personToDelete = viewModel.people[indexToDelete]
+                                viewModel.deletePerson(withID: personToDelete.id)
                             }
                         }
                     }
@@ -71,14 +71,14 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $showingAddSheet) {
-                AddView(myContacs: myContacts)
+                AddView(viewModel: viewModel)
             }
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }

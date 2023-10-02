@@ -15,7 +15,12 @@ struct Person: Codable, Identifiable {
     let name: String
     let profession: String
     let description: String
-    var image: Data?
+    let image: Data?
+    let location: Location
+
+    //vai ter uma struct de location que é codable
+    //person vai receber uma struct de location
+    //vai pegar a localizaçao do device no momento em que addview acrescenta a foto
 
     var firstName: String {
         return name.components(separatedBy: " ").first ?? name
