@@ -26,7 +26,7 @@ struct AddView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Profile Picture")) {
+                Section(header: Text("Profile Picture (tap to add photo)")) {
                     HStack {
                         Spacer()
                         if let image = image {
