@@ -11,11 +11,16 @@ import SwiftUI
 
 struct Person: Codable, Identifiable {
 
-    //figuring out how to store image
     let id: UUID
     let name: String
+    let profession: String
+    let description: String
     var image: Data?
 
+    var firstName: String {
+        return name.components(separatedBy: " ").first ?? name
+    }
+    
     var displayImage: Image {
         if let imageData = image, let uiImage = UIImage(data: imageData) {
             return Image(uiImage: uiImage)

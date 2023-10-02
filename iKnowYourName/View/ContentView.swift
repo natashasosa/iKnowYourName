@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ContentView: View {
 
-    //@StateObject private var viewModel = ViewModel()
     @StateObject private var myContacts = People()
     @State private var showingAddSheet = false
 
@@ -18,7 +17,17 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 if myContacts.people.count < 1 {
-                    Text("You haven't saved a person's name yet.")
+                    VStack {
+                        Image(systemName: "person.fill")
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                            .foregroundColor(.gray)
+                            .padding(.bottom, 20)
+
+                        Text("You haven't saved anyone yet.")
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                    }
                 } else {
                     List {
                         ForEach(myContacts.people) { person in
@@ -32,16 +41,28 @@ struct ContentView: View {
                                         .frame(width: 55, height: 55)
                                         .clipShape(Circle())
 
-                                    Text(person.name)
-                                        .font(.headline)
-                                        .padding(.horizontal)
+                                    VStack(alignment: .leading) {
+                                        Text(person.name)
+                                            .font(.headline)
+
+                                        Text(person.profession)
+                                            .font(.body)
+                                            .foregroundColor(.gray)
+                                    }
+                                    .padding(.horizontal)
                                 }
+                            }
+                        }
+                        .onDelete { indices in
+                            if let indexToDelete = indices.first {
+                                let personToDelete = myContacts.people[indexToDelete]
+                                myContacts.deletePerson(withID: personToDelete.id)
                             }
                         }
                     }
                 }
             }
-            .navigationTitle("I know your name")
+            .navigationTitle("iKnowYourName")
             .toolbar {
                 Button {
                     showingAddSheet = true

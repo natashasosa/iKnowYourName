@@ -29,5 +29,12 @@ class People: ObservableObject {
             print("Error saving people: \(error)")
         }
     }
+
+    func deletePerson(withID id: UUID) {
+        if let index = people.firstIndex(where: { $0.id == id }) {
+            people.remove(at: index)
+            savePeople() // Save the updated data after deletion
+        }
+    }
     
 }
