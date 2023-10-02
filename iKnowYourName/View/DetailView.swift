@@ -24,7 +24,7 @@ struct DetailView: View {
             Text("I am \(person.name)")
                 .font(.title)
                 .fontWeight(.bold)
-                .padding(.bottom, 10)
+                .padding(.bottom, 2)
                 .multilineTextAlignment(.center)
 
             Text("Profession: \(person.profession)")
