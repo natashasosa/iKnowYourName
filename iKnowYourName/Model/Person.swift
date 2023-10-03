@@ -8,6 +8,7 @@
 import Foundation
 import CoreImage
 import SwiftUI
+import MapKit
 
 struct Person: Codable, Identifiable {
 
@@ -18,6 +19,17 @@ struct Person: Codable, Identifiable {
     let image: Data?
     let location: Location
 
+    var myLatitude: String {
+        return String(format: "%f", location.latitude)
+    }
+
+    var myLongitude: String {
+        return String(format:"%f", location.longitude)
+    }
+
+    var mapRegion: MKCoordinateRegion {
+        return MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), span: MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0))
+    }
     //vai ter uma struct de location que é codable
     //person vai receber uma struct de location
     //vai pegar a localizaçao do device no momento em que addview acrescenta a foto

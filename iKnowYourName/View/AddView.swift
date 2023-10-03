@@ -66,13 +66,15 @@ struct AddView: View {
                     TextField("Profession", text: $profession)
                     TextField("Description", text: $description)
                 }
-                Button("Start location") {
-                    self.locationFetcher.start()
-                }
+//                Button("Start location") {
+//                    self.locationFetcher.start()
+//                }
                 Button("Test location") {
 
                     if let location = self.locationFetcher.lastKnownLocation {
                         print("Your location is \(location)")
+                        print("Latitude = \(locationFetcher.lastKnownLocation?.latitude)")
+                        print("Longitude = \(locationFetcher.lastKnownLocation?.longitude)")
                     } else {
                         print("Your location is unknown")
                     }
@@ -85,12 +87,15 @@ struct AddView: View {
                             imageData = jpegData
                         }
                     }
-                    let newPerson = Person(id: id, name: name, profession: profession, description: description, image: imageData ,location: Location.example)
+                    let newPerson = Person(id: id, name: name, profession: profession, description: description, image: imageData ,location: Location(latitude: locationFetcher.lastKnownLocation?.latitude ?? 0.0, longitude: locationFetcher.lastKnownLocation!.longitude ?? 0.0))
 
                     viewModel.people.append(newPerson)
                     viewModel.savePeople() // Save the updated data
                     dismiss()
                 }
+            }
+            .onAppear {
+                self.locationFetcher.start()
             }
             .navigationBarTitle("Add new contact", displayMode: .inline)
             .onChange(of: inputImage) { _ in loadImage() }

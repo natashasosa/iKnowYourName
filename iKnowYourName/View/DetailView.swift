@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct DetailView: View {
     let person: Person
+    @State var mapRegion: MKCoordinateRegion
 
     var body: some View {
         VStack {
@@ -34,12 +36,14 @@ struct DetailView: View {
 
             Text("Description:")
                 .font(.headline)
-                .padding(.bottom, 5)
+                .padding(.bottom, 2)
 
             Text(person.description)
                 .font(.body)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal)
+                .padding([.horizontal, .bottom])
+
+            Map(coordinateRegion: $mapRegion)
 
             Spacer()
             Spacer()

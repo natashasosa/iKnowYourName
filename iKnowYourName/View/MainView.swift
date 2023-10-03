@@ -32,7 +32,7 @@ struct MainView: View {
                     List {
                         ForEach(viewModel.people) { person in
                             NavigationLink {
-                                DetailView(person: person)
+                                DetailView(person: person, mapRegion: person.mapRegion)
                             } label: {
                                 HStack {
                                     person.displayImage
