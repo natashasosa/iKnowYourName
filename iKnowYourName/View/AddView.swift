@@ -5,10 +5,6 @@
 //  Created by Natasha Rebelo on 29/09/23.
 //
 
-// to do:
-// find a place to call the LocationFetcher without an user input
-// find a way to get its coordenates to be able to create it's location on the person object
-
 import SwiftUI
 import CoreLocation
 
@@ -65,19 +61,6 @@ struct AddView: View {
                     TextField("Name", text: $name)
                     TextField("Profession", text: $profession)
                     TextField("Description", text: $description)
-                }
-//                Button("Start location") {
-//                    self.locationFetcher.start()
-//                }
-                Button("Test location") {
-
-                    if let location = self.locationFetcher.lastKnownLocation {
-                        print("Your location is \(location)")
-                        print("Latitude = \(locationFetcher.lastKnownLocation?.latitude)")
-                        print("Longitude = \(locationFetcher.lastKnownLocation?.longitude)")
-                    } else {
-                        print("Your location is unknown")
-                    }
                 }
 
                 Button("Save") {

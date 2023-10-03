@@ -8,8 +8,8 @@
 import Foundation
 import CoreLocation
 
-struct Location: Codable, Equatable {
-
+struct Location: Identifiable, Codable, Equatable {
+    let id = UUID()
     let latitude: Double
     let longitude: Double
 
